@@ -18,7 +18,6 @@
         data() {
             return {
                 tags: [
-                    // {name: 'About', icon: 'fa fa-inbox', link: '/about', number: null},
                     {name: 'Today', icon: 'fa fa-calendar-o', link: '/today', number: 0},
                     {name: 'Home', icon: 'fa fa-calendar', link: '/', number: 0}
                 ]
