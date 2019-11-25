@@ -40,47 +40,42 @@
             }
         },
         methods: {
-            updateIdTask(index) {
-                for (index; index < this.tasks.length; index++) {
-                    if(this.tasks[index].id !== this.tasks.indexOf(this.tasks[index])) {
-                        this.tasks[index].id = this.tasks.indexOf(this.tasks[index])
+            updateIdTask() {
+                this.tasks.forEach(task => {
+                    if (task.id !== this.tasks.indexOf(task)) {
+                        task.id = this.tasks.indexOf(task)
                     }
-                }
+                })
             },
             updateNumberTask(task) {
                 let count = 0
-                for (let i = 0; i < this.tasks.length; i++) {
-                    if(this.tasks[i].selected.name === task.selected.name) {
+                this.tasks.forEach(tsk => {
+                    if (tsk.selected.name === task.selected.name) {
                         count++
-                        this.tasks[i].selected.number = count
+                        tsk.selected.number = count
                     }
-                }
+                })
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             updateNumberProject(task) {
-                for (let i = 0; i < this.projects.length; i++) {
-                    if(this.projects[i].name === task.selected.name){
-                        this.projects[i].number -= 1
+                this.projects.forEach(project => {
+                    if (project.name === task.selected.name) {
+                        project.number -= 1
                     }
-                }
+                })
                 localStorage.setItem('projects', JSON.stringify(this.projects))
             },
             removeTask(task) {
                 this.tasks.splice(this.tasks.indexOf(task), 1)
-                this.updateIdTask(0)
+                this.updateIdTask()
                 this.updateNumberTask(task)
                 this.updateNumberProject(task)
+
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             toggleChecked(task) {
                 task.completed = !task.completed
 
-                // Update Completed Task or Not Completed under LocalStorage
-                for (let i = 0; i < this.tasks.length; i++) {
-                    if(this.tasks[i].id === task.id) {
-                        this.tasks[i].completed = task.completed
-                    }
-                }
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             }
         }

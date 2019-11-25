@@ -58,7 +58,6 @@
                         color: this.newProjectColor,
                         number: 0
                     }
-                    console.log(this.isShow)
 
                     this.$store.dispatch('addProject', project)
 
