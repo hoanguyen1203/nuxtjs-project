@@ -28,6 +28,7 @@
 
 <script>
     import { EventBus } from '~/store/event-bus.js'
+    import _ from 'lodash'
 
     export default {
         name: 'ModalAddProject',
@@ -51,7 +52,8 @@
         methods: {
             addProject() {
                 if (this.newProject !== '') {
-                    const link = this.newProject.split(" ").join("-").toLowerCase()
+                    // const link = this.newProject.split(" ").join("-").toLowerCase()
+                    const link = _.toLower(_.join(_.split(this.newProject, ' '), '-'))
                     const project = {
                         link: link,
                         name: this.newProject,

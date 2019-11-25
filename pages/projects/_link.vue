@@ -10,6 +10,7 @@
 
 <script>
     import Tasks from '~/components/article/Tasks'
+    import _ from 'lodash'
 
     export default {
         components: {
@@ -25,22 +26,24 @@
                 return this.$store.state.projects
             },
             project() {
-                return this.projects.find(project => project.link === this.link)
+                const project = _.find(this.projects, project => project.link === this.link)
+                return project
             },
             tasks() {
                 return this.$store.state.tasks
             },
             taskList() {
-                return this.tasks.filter(task => task.selected.name === this.project.name)
+                const taskList = _.filter(this.tasks, task => task.selected.name === this.project.name)
+                return taskList
             },
             datesCreated() {
                 let datesCreated = []
-                this.taskList.forEach(task => {
+                _.forEach(this.taskList, task => {
                     if (datesCreated.length === 0) {
                         datesCreated.push(task.dateCreated)
                     } else {
                         let hadDateCreated = false
-                        datesCreated.forEach(date => {
+                        _.forEach(datesCreated, date => {
                             if (task.dateCreated === date) {
                                 hadDateCreated = true
                             }

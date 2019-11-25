@@ -19,16 +19,16 @@
             taskList() {
                 let date = new Date()
                 let today = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-                return this.tasks.filter(task => task.dateCreated === today)
+                return _.filter(this.tasks, task => task.dateCreated === today)
             },
             datesCreated() {
                 let datesCreated = []
-                this.taskList.forEach(task => {
+                _.forEach(this.taskList, task => {
                     if (datesCreated.length === 0) {
                         datesCreated.push(task.dateCreated)
                     } else {
                         let hadDateCreated = false
-                        datesCreated.forEach(date => {
+                        _.forEach(datesCreated, date => {
                             if (task.dateCreated === date) {
                                 hadDateCreated = true
                             }

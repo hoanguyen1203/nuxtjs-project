@@ -11,6 +11,7 @@
 
 <script>
     import Task from '~/components/task/Task'
+    import _ from 'lodash'
 
     export default {
         name: 'Tasks',
@@ -64,7 +65,7 @@
                 return this.days[new Date(this.date).getDay()]
             },
             showDate() {
-                return this.months[this.date.split("/")[1] - 1] + " " + this.date.split("/")[2]
+                return this.months[_.split(this.date, '/', 3)[1] - 1] + " " + _.split(this.date, '/', 3)[2]
             }
         }
     }

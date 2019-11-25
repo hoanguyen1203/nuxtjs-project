@@ -9,6 +9,7 @@
 
 <script>
     import Tag from '~/components/tag/Tag'
+    import _ from 'lodash'
 
     export default {
         name: 'Tags',
@@ -31,7 +32,8 @@
                 return this.tasks.length
             },
             tagHome() {
-                return this.tags.find(tag => tag.name === 'Home')
+                const tagHome = _.find(this.tags, tag => tag.name === 'Home')
+                return tagHome
             },
             numberTagHome() {
                 this.tagHome.number = this.sumTasks
@@ -40,11 +42,12 @@
             sumTasksToday() {
                 let date = new Date()
                 let today = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-                let arrayTaskToday = this.tasks.filter(task => task.dateCreated === today)
+                let arrayTaskToday = _.filter(this.tasks, task => task.dateCreated === today)
                 return arrayTaskToday.length
             },
             tagToday() {
-                return this.tags.find(tag => tag.name === 'Today')
+                const tagToday = _.find(this.tags, tag => tag.name === 'Today')
+                return tagToday
             },
             numberTagToday() {
                 this.tagToday.number = this.sumTasksToday

@@ -15,6 +15,7 @@
 
 <script>
     import { EventBus } from '~/store/event-bus.js'
+    import _ from 'lodash'
 
     export default {
         name: 'Header',
@@ -33,7 +34,7 @@
                 return this.$nuxt.$route.path
             },
             convertStringToArray() {
-                return this.getCurrentPath.split('/')
+                return _.split(this.getCurrentPath, '/')
             },
             getHeaderTitle() {
                 if(this.convertStringToArray[1] === '') {

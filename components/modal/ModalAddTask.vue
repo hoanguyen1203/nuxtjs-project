@@ -30,6 +30,7 @@
 
 <script>
     import { EventBus } from '~/store/event-bus.js'
+    import _ from 'lodash'
 
     export default {
         name: 'ModalAddTask',
@@ -80,7 +81,7 @@
                 }
             },
             updateNumberProject(number) {
-                this.projects.forEach(project => {
+                _.forEach(this.projects, project => {
                     if(project.name === this.selected.name){
                         project.number = number
                     }

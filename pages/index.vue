@@ -6,6 +6,7 @@
 
 <script>
     import Tasks from '~/components/article/Tasks'
+    import _ from 'lodash'
 
     export default {
         components: {
@@ -23,7 +24,7 @@
             },
             datesCreated() {
                 let datesCreated = []
-                this.tasks.forEach(task => {
+                _.forEach(this.tasks, task => {
                     if (datesCreated.length === 0) {
                         datesCreated.push(task.dateCreated)
                     } else {

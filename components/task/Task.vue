@@ -13,6 +13,8 @@
 </template>
 
 <script>
+    import _ from 'lodash'
+
     export default {
         name: 'Task',
         props: [
@@ -41,15 +43,15 @@
         },
         methods: {
             updateIdTask() {
-                this.tasks.forEach(task => {
-                    if (task.id !== this.tasks.indexOf(task)) {
-                        task.id = this.tasks.indexOf(task)
+                _.forEach(this.tasks, task => {
+                    if (task.id !== _.indexOf(this.tasks, task)) {
+                        task.id = _.indexOf(this.tasks, task)
                     }
                 })
             },
             updateNumberTask(task) {
                 let count = 0
-                this.tasks.forEach(tsk => {
+                _.forEach(this.tasks, tsk => {
                     if (tsk.selected.name === task.selected.name) {
                         count++
                         tsk.selected.number = count
@@ -58,7 +60,7 @@
                 localStorage.setItem('tasks', JSON.stringify(this.tasks))
             },
             updateNumberProject(task) {
-                this.projects.forEach(project => {
+                _.forEach(this.projects, project => {
                     if (project.name === task.selected.name) {
                         project.number -= 1
                     }
@@ -66,7 +68,7 @@
                 localStorage.setItem('projects', JSON.stringify(this.projects))
             },
             removeTask(task) {
-                this.tasks.splice(this.tasks.indexOf(task), 1)
+                this.tasks.splice(_.indexOf(this.tasks, task), 1)
                 this.updateIdTask()
                 this.updateNumberTask(task)
                 this.updateNumberProject(task)
