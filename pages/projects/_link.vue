@@ -53,6 +53,9 @@
                         }
                     }
                 })
+                // _.forEach(this.taskList, task => {
+                //     datesCreated = _.union([task.dateCreated], datesCreated)
+                // })
                 return datesCreated
             },
             sortDate() {

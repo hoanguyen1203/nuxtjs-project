@@ -24,20 +24,23 @@
             },
             datesCreated() {
                 let datesCreated = []
+                // _.forEach(this.tasks, task => {
+                //     if (datesCreated.length === 0) {
+                //         datesCreated.push(task.dateCreated)
+                //     } else {
+                //         let hadDateCreated = false
+                //         datesCreated.forEach(date => {
+                //             if (task.dateCreated === date) {
+                //                 hadDateCreated = true
+                //             }
+                //         })
+                //         if (!hadDateCreated) {
+                //             datesCreated.push(task.dateCreated)
+                //         }
+                //     }
+                // })
                 _.forEach(this.tasks, task => {
-                    if (datesCreated.length === 0) {
-                        datesCreated.push(task.dateCreated)
-                    } else {
-                        let hadDateCreated = false
-                        datesCreated.forEach(date => {
-                            if (task.dateCreated === date) {
-                                hadDateCreated = true
-                            }
-                        })
-                        if (!hadDateCreated) {
-                            datesCreated.push(task.dateCreated)
-                        }
-                    }
+                    datesCreated = _.union([task.dateCreated], datesCreated)
                 })
                 return datesCreated
             },
