@@ -3,7 +3,7 @@
     <div class="project__title">
       <div class="project__icon" v-bind:style="colorProjectIcon"></div>
       <div class="project__name">
-        <nuxt-link :to="'/projects/'+project.link">{{ project.name }}</nuxt-link>
+        <nuxt-link :to="`/projects/${project.link}`">{{ project.name }}</nuxt-link>
       </div>
     </div>
     <div class="project__number">{{ project.number }}</div>
